@@ -21,9 +21,7 @@ public final class Ports {
   }
 
   public static final class Shooter {
-    public static final int BOTTOMSHOOTER = 30;
-    public static final int TOPSHOOTER = 30;
-
-
+    public static final int MOTOR = 30;
+    public static final int SHOOTER = 31;
   }
 }
