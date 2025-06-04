@@ -5,9 +5,7 @@ import static edu.wpi.first.units.Units.Radians;
 import static edu.wpi.first.units.Units.RotationsPerSecond;
 import static org.sciborgs1155.lib.FaultLogger.check;
 import static org.sciborgs1155.lib.FaultLogger.register;
-import static org.sciborgs1155.robot.shooter.ShooterConstants.CURRENT_LIMIT;
-import static org.sciborgs1155.robot.shooter.ShooterConstants.POSITION_FACTOR;
-import static org.sciborgs1155.robot.shooter.ShooterConstants.VELOCITY_FACTOR;
+import static org.sciborgs1155.robot.shooter.ShooterConstants.*;
 
 import com.revrobotics.RelativeEncoder;
 import com.revrobotics.spark.SparkBase.PersistMode;
@@ -20,6 +18,7 @@ import java.util.Set;
 import org.sciborgs1155.lib.SparkUtils;
 import org.sciborgs1155.lib.SparkUtils.Sensor;
 import org.sciborgs1155.robot.Ports;
+import org.sciborgs1155.robot.shooter.ShooterConstants;
 
 public class RealShooter implements ShooterIO {
   private final SparkFlex motor;
@@ -31,7 +30,7 @@ public class RealShooter implements ShooterIO {
     shooterEncoder = motor.getEncoder();
     config = new SparkFlexConfig();
 
-    config.apply(config.idleMode(IdleMode.kCoast).smartCurrentLimit((int) CURRENT_LIMIT.in(Amps)));
+    config.apply(config.idleMode(IdleMode.kCoast).smartCurrentLimit((int) ShooterConstants.CURRENT_LIMIT.in(Amps)));
     config.apply(config.absoluteEncoder.inverted(inverted));
     config.apply(
         config

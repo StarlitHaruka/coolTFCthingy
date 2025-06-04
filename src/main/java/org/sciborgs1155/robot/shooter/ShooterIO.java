@@ -5,4 +5,6 @@ public interface ShooterIO {
   void setVoltage(double voltage);
 
   double velocity();
+
+  void close();
 }
