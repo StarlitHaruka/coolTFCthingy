@@ -11,4 +11,7 @@ public class SimShooter implements ShooterIO {
   public double velocity() {
     return 0;
   }
+
+  @Override
+  public void close() {}
 }

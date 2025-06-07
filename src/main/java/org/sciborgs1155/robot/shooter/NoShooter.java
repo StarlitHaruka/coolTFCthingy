@@ -9,4 +9,9 @@ public class NoShooter implements ShooterIO {
   public double velocity() {
     return 0;
   }
+
+  @Override
+  public void close() {
+    
+  }
 }

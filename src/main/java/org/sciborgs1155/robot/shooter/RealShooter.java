@@ -55,7 +55,6 @@ public class RealShooter implements ShooterIO {
 
     register(motor);
   }
-  ;
 
   @Override
   public void setVoltage(double voltage) {

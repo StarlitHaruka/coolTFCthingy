@@ -11,6 +11,11 @@ import monologue.Logged;
 import org.sciborgs1155.robot.shooter.ShooterConstants.FF;
 import org.sciborgs1155.robot.shooter.ShooterConstants.PID;
 
+import static org.sciborgs1155.robot.shooter.ShooterConstants.DEFAULT_VELOCITY;
+import static org.sciborgs1155.robot.shooter.ShooterConstants.MAX_VELOCITY;
+import static org.sciborgs1155.robot.shooter.ShooterConstants.VELOCITY_TOLERANCE;
+
+
 public class Shooter extends SubsystemBase implements Logged {
   private final ShooterIO hardware;
 
@@ -21,9 +26,19 @@ public class Shooter extends SubsystemBase implements Logged {
 
   private final PIDController hardwarePIDController = new PIDController(PID.kP, PID.kI, PID.kD);
 
+
+
+
   public Shooter(ShooterIO hardware) {
     this.hardware = hardware;
+
+    hardware.set
+
+    setDefaultCommand(run(() -> update(0)));
   }
+
+
+
 
   public void setVoltage(double voltage) {
     hardware.setVoltage(voltage);
@@ -41,6 +56,10 @@ public class Shooter extends SubsystemBase implements Logged {
                 velocitySetpoint,
                 -MAX_VELOCITY.in(RadiansPerSecond),
                 MAX_VELOCITY.in(RadiansPerSecond));
-    double FF = hardwareFeedforward.calculate(setpoint, velocity, PERIOD.in(Seconds));
+    double FF = hardwareFeedforward.calculate(velocity);
+    double FB = hardwarePIDController.calculate(velocity, velocity);
+    hardware.setVoltage(MathUtil.clamp(FF + FB, -12, 12));
+    setpoint = velocity;
+
   }
 }

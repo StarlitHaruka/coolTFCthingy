@@ -38,7 +38,6 @@ public class ShooterConstants {
     public static final double kD = 0.0;
   }
    
-
   public static final class FF {
     public static final double kS = 0;
     public static final double kV = 0.016896;
