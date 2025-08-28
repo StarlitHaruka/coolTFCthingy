@@ -18,7 +18,6 @@ import java.util.Set;
 import org.sciborgs1155.lib.SparkUtils;
 import org.sciborgs1155.lib.SparkUtils.Sensor;
 import org.sciborgs1155.robot.Ports;
-import org.sciborgs1155.robot.shooter.ShooterConstants;
 
 public class RealShooter implements ShooterIO {
   private final SparkFlex motor;

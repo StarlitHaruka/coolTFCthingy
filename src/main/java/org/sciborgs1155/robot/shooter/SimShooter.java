@@ -2,7 +2,7 @@ package org.sciborgs1155.robot.shooter;
 
 public class SimShooter implements ShooterIO {
 
-  // empty for now
+  // empty for now x3
 
   @Override
   public void setVoltage(double voltage) {}

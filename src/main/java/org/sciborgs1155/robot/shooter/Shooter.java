@@ -32,13 +32,10 @@ public class Shooter extends SubsystemBase implements Logged {
   public Shooter(ShooterIO hardware) {
     this.hardware = hardware;
 
-    hardware.set
+    hardwarePIDController.setTolerance(VELOCITY_TOLERANCE.in(RadiansPerSecond));
 
     setDefaultCommand(run(() -> update(0)));
   }
-
-
-
 
   public void setVoltage(double voltage) {
     hardware.setVoltage(voltage);
@@ -60,6 +57,8 @@ public class Shooter extends SubsystemBase implements Logged {
     double FB = hardwarePIDController.calculate(velocity, velocity);
     hardware.setVoltage(MathUtil.clamp(FF + FB, -12, 12));
     setpoint = velocity;
-
   }
+
+
+  
 }
